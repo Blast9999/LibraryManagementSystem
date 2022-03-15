@@ -1,0 +1,315 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{25B8F447-D989-4A0D-9B4C-68FB41E359D1}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>LibraryManagementSystem</RootNamespace>
+    <AssemblyName>LibraryManagementSystem</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="NPinyinPro, Version=0.3.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\NPinyinPro.0.3.3\lib\net20\NPinyinPro.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="View\AdministratorHome.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\AdministratorHome.Designer.cs">
+      <DependentUpon>AdministratorHome.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\AdministratorModule\BookManagement\AddBook.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\AdministratorModule\BookManagement\AddBook.Designer.cs">
+      <DependentUpon>AddBook.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\AdministratorModule\BookManagement\BookDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\AdministratorModule\BookManagement\BookDetails.Designer.cs">
+      <DependentUpon>BookDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\AdministratorModule\BookManagement\BookForm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\AdministratorModule\BookManagement\BookForm.Designer.cs">
+      <DependentUpon>BookForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Login.Designer.cs">
+      <DependentUpon>Login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="View\AdministratorModule\BookManagement\BookingInfoForm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\AdministratorModule\BookManagement\BookingInfoForm.Designer.cs">
+      <DependentUpon>BookingInfoForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\AdministratorModule\BookManagement\ClassificationForm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\AdministratorModule\BookManagement\ClassificationForm.Designer.cs">
+      <DependentUpon>ClassificationForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\AdministratorModule\BookManagement\EditBook.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\AdministratorModule\BookManagement\EditBook.Designer.cs">
+      <DependentUpon>EditBook.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\AdministratorModule\BookManagement\HistoryLendInfoForm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\AdministratorModule\BookManagement\HistoryLendInfoForm.Designer.cs">
+      <DependentUpon>HistoryLendInfoForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\AdministratorModule\BookManagement\LendInfoForm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\AdministratorModule\BookManagement\LendInfoForm.Designer.cs">
+      <DependentUpon>LendInfoForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Registration.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Registration.Designer.cs">
+      <DependentUpon>Registration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\AdministratorModule\StaffManagement\AddStaff.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\AdministratorModule\StaffManagement\AddStaff.Designer.cs">
+      <DependentUpon>AddStaff.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\AdministratorModule\StaffManagement\EditStaff.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\AdministratorModule\StaffManagement\EditStaff.Designer.cs">
+      <DependentUpon>EditStaff.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\AdministratorModule\StaffManagement\StaffForm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\AdministratorModule\StaffManagement\StaffForm.Designer.cs">
+      <DependentUpon>StaffForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\StudentHomepage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\StudentHomepage.Designer.cs">
+      <DependentUpon>StudentHomepage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\AdministratorModule\StudentManagement\AddStudent.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\AdministratorModule\StudentManagement\AddStudent.Designer.cs">
+      <DependentUpon>AddStudent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\AdministratorModule\StudentManagement\EditStudent.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\AdministratorModule\StudentManagement\EditStudent.Designer.cs">
+      <DependentUpon>EditStudent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\AdministratorModule\StudentManagement\StudentForm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\AdministratorModule\StudentManagement\StudentForm.Designer.cs">
+      <DependentUpon>StudentForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\UserModule\BookManagement\BorrowBooksForm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\UserModule\BookManagement\BorrowBooksForm.Designer.cs">
+      <DependentUpon>BorrowBooksForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\UserModule\BookManagement\PersonalInformation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\UserModule\BookManagement\PersonalInformation.Designer.cs">
+      <DependentUpon>PersonalInformation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\UserModule\BookManagement\ReturnBooksForm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\UserModule\BookManagement\ReturnBooksForm.Designer.cs">
+      <DependentUpon>ReturnBooksForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\UserModule\BookManagement\StudentBookBorrowing.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\UserModule\BookManagement\StudentBookBorrowing.Designer.cs">
+      <DependentUpon>StudentBookBorrowing.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\UserModule\BookManagement\UserAppointmentManagement.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\UserModule\BookManagement\UserAppointmentManagement.Designer.cs">
+      <DependentUpon>UserAppointmentManagement.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="View\AdministratorHome.resx">
+      <DependentUpon>AdministratorHome.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\AdministratorModule\BookManagement\AddBook.resx">
+      <DependentUpon>AddBook.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\AdministratorModule\BookManagement\BookDetails.resx">
+      <DependentUpon>BookDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\AdministratorModule\BookManagement\BookForm.resx">
+      <DependentUpon>BookForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Login.resx">
+      <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="View\AdministratorModule\BookManagement\BookingInfoForm.resx">
+      <DependentUpon>BookingInfoForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\AdministratorModule\BookManagement\ClassificationForm.resx">
+      <DependentUpon>ClassificationForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\AdministratorModule\BookManagement\EditBook.resx">
+      <DependentUpon>EditBook.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\AdministratorModule\BookManagement\HistoryLendInfoForm.resx">
+      <DependentUpon>HistoryLendInfoForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\AdministratorModule\BookManagement\LendInfoForm.resx">
+      <DependentUpon>LendInfoForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Registration.resx">
+      <DependentUpon>Registration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\AdministratorModule\StaffManagement\AddStaff.resx">
+      <DependentUpon>AddStaff.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\AdministratorModule\StaffManagement\EditStaff.resx">
+      <DependentUpon>EditStaff.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\AdministratorModule\StaffManagement\StaffForm.resx">
+      <DependentUpon>StaffForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\StudentHomepage.resx">
+      <DependentUpon>StudentHomepage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\AdministratorModule\StudentManagement\AddStudent.resx">
+      <DependentUpon>AddStudent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\AdministratorModule\StudentManagement\EditStudent.resx">
+      <DependentUpon>EditStudent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\AdministratorModule\StudentManagement\StudentForm.resx">
+      <DependentUpon>StudentForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\UserModule\BookManagement\BorrowBooksForm.resx">
+      <DependentUpon>BorrowBooksForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\UserModule\BookManagement\PersonalInformation.resx">
+      <DependentUpon>PersonalInformation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\UserModule\BookManagement\ReturnBooksForm.resx">
+      <DependentUpon>ReturnBooksForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\UserModule\BookManagement\StudentBookBorrowing.resx">
+      <DependentUpon>StudentBookBorrowing.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\UserModule\BookManagement\UserAppointmentManagement.resx">
+      <DependentUpon>UserAppointmentManagement.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\DataSources\Model.BookLending.datasource" />
+    <None Include="Properties\DataSources\Model.BookModel.datasource" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BLL\BLL.csproj">
+      <Project>{74c215bb-15a1-4c8e-bb18-b1e09c655ab7}</Project>
+      <Name>BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DAL\DAL.csproj">
+      <Project>{e294aadb-0def-471c-bf93-3a1c9df256b8}</Project>
+      <Name>DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Model\Model.csproj">
+      <Project>{963f4344-07bb-430e-a64b-7bf8f200245b}</Project>
+      <Name>Model</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\BookPictures\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\云朵.jpg" />
+    <Content Include="Resources\减号.png" />
+    <None Include="Resources\密匙.png" />
+    <Content Include="Resources\钥匙.ico" />
+    <Content Include="Resources\错误.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

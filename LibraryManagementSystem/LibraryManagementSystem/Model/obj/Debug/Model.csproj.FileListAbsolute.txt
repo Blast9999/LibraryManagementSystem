@@ -1,0 +1,6 @@
+E:\毕业设计模板\LibraryManagementSystem\LibraryManagementSystem\Model\bin\Debug\Model.dll
+E:\毕业设计模板\LibraryManagementSystem\LibraryManagementSystem\Model\bin\Debug\Model.pdb
+E:\毕业设计模板\LibraryManagementSystem\LibraryManagementSystem\Model\obj\Debug\Model.csproj.CoreCompileInputs.cache
+E:\毕业设计模板\LibraryManagementSystem\LibraryManagementSystem\Model\obj\Debug\Model.dll
+E:\毕业设计模板\LibraryManagementSystem\LibraryManagementSystem\Model\obj\Debug\Model.pdb
+E:\毕业设计模板\LibraryManagementSystem\LibraryManagementSystem\Model\obj\Debug\Model.csproj.AssemblyReference.cache
