@@ -42,17 +42,28 @@ namespace LibraryManagementSystem
                 PageSize = Convert.ToInt32(cb_PageSize.SelectedItem)
 
             };
-            var response = StudentManagementBLL.GetStudent(request, out totalPage);
-            if (response != null)
+
+
+            List<StudentModel> response = null;
+            BackgroundWorker worker = new BackgroundWorker();//使用了worker线程，加快了页面的响应速度，从而使页面响应更加流程
+            worker.DoWork += delegate (object obj, DoWorkEventArgs dw)
             {
-                this.dgv_Student.AutoGenerateColumns = false;
-                this.label4.Text = string.Format("{0}/{1}", StudentManagementBLL.PageNum, totalPage);
-                dgv_Student.DataSource = response;
-            }
-            else
+                response = StudentManagementBLL.GetStudent(request, out totalPage);
+            };
+            worker.RunWorkerCompleted += delegate (object obj, RunWorkerCompletedEventArgs rwc)
             {
-                dgv_Student.DataSource = null;
-            }
+                if (response != null)
+                {
+                    this.dgv_Student.AutoGenerateColumns = false;
+                    this.label4.Text = string.Format("{0}/{1}", StudentManagementBLL.PageNum, totalPage);
+                    dgv_Student.DataSource = response;
+                }
+                else
+                {
+                    dgv_Student.DataSource = null;
+                }
+            };
+            worker.RunWorkerAsync();
 
         }
 
@@ -194,6 +205,6 @@ namespace LibraryManagementSystem
             }
         }
 
-       
+
     }
 }

@@ -33,33 +33,45 @@ namespace LibraryManagementSystem
                 BookCode = tb_BookCode.Text
             };
 
-            var Response = BookManagementBLL.GetUserBorrowBooksList(request);
 
-            foreach (var item in Response)
+
+            List<UserLendInfo> Response = null;
+            BackgroundWorker worker = new BackgroundWorker();//使用了worker线程，加快了页面的响应速度，从而使页面响应更加流程
+            worker.DoWork += delegate (object obj, DoWorkEventArgs dw)
             {
-                if (Convert.ToDateTime(item.ReturnBookTime) < DateTime.Now)
+                Response = BookManagementBLL.GetUserBorrowBooksList(request);
+            };
+            worker.RunWorkerCompleted += delegate (object obj, RunWorkerCompletedEventArgs rwc)
+            {
+                foreach (var item in Response)
                 {
-                    UserLendInfoRequest req = new UserLendInfoRequest()
+                    if (Convert.ToDateTime(item.ReturnBookTime) < DateTime.Now)
                     {
-                        Name = UserName,
-                        ReaderID = UserCode,
-                        Title = item.Title,
-                        BookCode = item.BookCode
-                    };
-                    BookManagementBLL.OverdueAmendment(req);
+                        UserLendInfoRequest req = new UserLendInfoRequest()
+                        {
+                            Name = UserName,
+                            ReaderID = UserCode,
+                            Title = item.Title,
+                            BookCode = item.BookCode
+                        };
+                        BookManagementBLL.OverdueAmendment(req);
+                    }
                 }
-            }
 
 
-            if (Response != null)
-            {
-                this.dgv_BorrowInfo.AutoGenerateColumns = false;
-                dgv_BorrowInfo.DataSource = Response;
-            }
-            else
-            {
-                dgv_BorrowInfo.DataSource = null;
-            }
+                if (Response != null)
+                {
+                    this.dgv_BorrowInfo.AutoGenerateColumns = false;
+                    dgv_BorrowInfo.DataSource = Response;
+                }
+                else
+                {
+                    dgv_BorrowInfo.DataSource = null;
+                }
+            };
+            worker.RunWorkerAsync();
+
+
         }
 
         private void dgv_BorrowInfo_CellContentClick(object sender, DataGridViewCellEventArgs e)

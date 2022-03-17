@@ -54,18 +54,27 @@ namespace LibraryManagementSystem
             };
 
 
-            bookings = BookManagementBLL.GetBookingInfoList(request, out totalPage);
+            BackgroundWorker worker = new BackgroundWorker();//使用了worker线程，加快了页面的响应速度，从而使页面响应更加流程
+            worker.DoWork += delegate (object obj, DoWorkEventArgs dw)
+            {
+                bookings = BookManagementBLL.GetBookingInfoList(request, out totalPage);
+            };
+            worker.RunWorkerCompleted += delegate (object obj, RunWorkerCompletedEventArgs rwc)
+            {
+                if (bookings != null)
+                {
+                    this.dgv_BookBookingInfo.AutoGenerateColumns = false;
+                    this.label4.Text = string.Format("{0}/{1}", PageNum, totalPage);
+                    dgv_BookBookingInfo.DataSource = bookings;
+                }
+                else
+                {
+                    dgv_BookBookingInfo.DataSource = null;
+                }
+            };
+            worker.RunWorkerAsync();
 
-            if (bookings != null)
-            {
-                this.dgv_BookBookingInfo.AutoGenerateColumns = false;
-                this.label4.Text = string.Format("{0}/{1}", PageNum, totalPage);
-                dgv_BookBookingInfo.DataSource = bookings;
-            }
-            else
-            {
-                dgv_BookBookingInfo.DataSource = null;
-            }
+
         }
 
         private void button1_Click(object sender, EventArgs e)

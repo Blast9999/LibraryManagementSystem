@@ -50,25 +50,36 @@ namespace LibraryManagementSystem
                 PageSize = Convert.ToInt32(cb_PageSize.SelectedItem)
             };
 
-            var Response = BookManagementBLL.GetBooks(bookRequest, out totalPage);
 
-            if (Response != null)
+            List<BookModel> Response = null;
+            BackgroundWorker worker = new BackgroundWorker();//使用了worker线程，加快了页面的响应速度，从而使页面响应更加流程
+            worker.DoWork += delegate (object obj, DoWorkEventArgs dw)
             {
-                this.dgv_Book.AutoGenerateColumns = false;
-                this.label4.Text = string.Format("{0}/{1}", BookManagementBLL.PageNum, totalPage);
-                foreach (var item in Response)
+                 Response = BookManagementBLL.GetBooks(bookRequest, out totalPage);
+            };
+            worker.RunWorkerCompleted += delegate (object obj, RunWorkerCompletedEventArgs rwc)
+            {
+                if (Response != null)
                 {
-                    if (Convert.ToInt32(item.NumBorrowed) >= 1)
+                    this.dgv_Book.AutoGenerateColumns = false;
+                    this.label4.Text = string.Format("{0}/{1}", BookManagementBLL.PageNum, totalPage);
+                    foreach (var item in Response)
                     {
+                        if (Convert.ToInt32(item.NumBorrowed) >= 1)
+                        {
 
+                        }
                     }
+                    dgv_Book.DataSource = Response;
                 }
-                dgv_Book.DataSource = Response;
-            }
-            else
-            {
-                dgv_Book.DataSource = null;
-            }
+                else
+                {
+                    dgv_Book.DataSource = null;
+                }
+            };
+            worker.RunWorkerAsync();
+
+
         }
 
         #region 分页数据

@@ -61,17 +61,28 @@ namespace LibraryManagementSystem
                 PageSize = Convert.ToInt32(cb_PageSize.SelectedItem)
             };
 
-            LendInfo = BookManagementBLL.GetLendInfoList(request, out totalPage);
-            if (LendInfo != null)
+
+            BackgroundWorker worker = new BackgroundWorker();//使用了worker线程，加快了页面的响应速度，从而使页面响应更加流程
+            worker.DoWork += delegate (object obj, DoWorkEventArgs dw)
             {
-                this.dgv_BookLendInfo.AutoGenerateColumns = false;
-                this.label4.Text = string.Format("{0}/{1}", PageNum, totalPage);
-                dgv_BookLendInfo.DataSource = LendInfo;
-            }
-            else
+                LendInfo = BookManagementBLL.GetLendInfoList(request, out totalPage);
+            };
+            worker.RunWorkerCompleted += delegate (object obj, RunWorkerCompletedEventArgs rwc)
             {
-                dgv_BookLendInfo.DataSource = null;
-            }
+                if (LendInfo != null)
+                {
+                    this.dgv_BookLendInfo.AutoGenerateColumns = false;
+                    this.label4.Text = string.Format("{0}/{1}", PageNum, totalPage);
+                    dgv_BookLendInfo.DataSource = LendInfo;
+                }
+                else
+                {
+                    dgv_BookLendInfo.DataSource = null;
+                }
+            };
+            worker.RunWorkerAsync();
+
+
         }
 
         private void button2_Click(object sender, EventArgs e)

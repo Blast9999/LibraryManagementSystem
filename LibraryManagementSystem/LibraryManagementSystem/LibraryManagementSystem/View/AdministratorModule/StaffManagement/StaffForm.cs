@@ -53,10 +53,29 @@ namespace LibraryManagementSystem
                 JobNumber = tb_JobNumber.Text
             };
 
-            var Response = StaffManagementBLL.GetStudent(request);
 
-            this.dgv_Staff.AutoGenerateColumns = false;
-            dgv_Staff.DataSource = Response;
+
+            List<StaffModel> Response = null;
+            BackgroundWorker worker = new BackgroundWorker();//使用了worker线程，加快了页面的响应速度，从而使页面响应更加流程
+            worker.DoWork += delegate (object obj, DoWorkEventArgs dw)
+            {
+                Response = StaffManagementBLL.GetStudent(request);
+            };
+            worker.RunWorkerCompleted += delegate (object obj, RunWorkerCompletedEventArgs rwc)
+            {
+                if (Response != null)
+                {
+                    this.dgv_Staff.AutoGenerateColumns = false;
+                    dgv_Staff.DataSource = Response;
+                }
+                else
+                {
+                    dgv_Staff.DataSource = null;
+                }
+            };
+            worker.RunWorkerAsync();
+
+
 
         }
 

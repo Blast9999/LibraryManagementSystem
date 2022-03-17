@@ -44,17 +44,29 @@ namespace LibraryManagementSystem
                 Title = tb_Title.Text,
                 BookCode = tb_BookCode.Text
             };
-            var Response = BookManagementBLL.GetBookBookingList(request);
+             
 
-            if (Response != null)
+            List<Model.UserAppointmentManagement> Response = null;
+            BackgroundWorker worker = new BackgroundWorker();//使用了worker线程，加快了页面的响应速度，从而使页面响应更加流程
+            worker.DoWork += delegate (object obj, DoWorkEventArgs dw)
             {
-                this.dgv_BookBooking.AutoGenerateColumns = false;
-                dgv_BookBooking.DataSource = Response;
-            }
-            else
+                Response = BookManagementBLL.GetBookBookingList(request);
+            };
+            worker.RunWorkerCompleted += delegate (object obj, RunWorkerCompletedEventArgs rwc)
             {
-                dgv_BookBooking.DataSource = null;
-            }
+                if (Response != null)
+                {
+                    this.dgv_BookBooking.AutoGenerateColumns = false;
+                    dgv_BookBooking.DataSource = Response;
+                }
+                else
+                {
+                    dgv_BookBooking.DataSource = null;
+                }
+            };
+            worker.RunWorkerAsync();
+
+
         }
 
         private void tb_Reset_Click(object sender, EventArgs e)

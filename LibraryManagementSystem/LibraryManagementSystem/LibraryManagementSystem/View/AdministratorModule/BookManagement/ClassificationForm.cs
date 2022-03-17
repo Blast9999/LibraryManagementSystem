@@ -44,17 +44,28 @@ namespace LibraryManagementSystem
                 Name = tb_BookType.Text
             };
 
-            var Response = BookManagementBLL.GetBookType(request);
 
-            if (Response != null)
+            List<BookType> Response = null;
+            BackgroundWorker worker = new BackgroundWorker();//使用了worker线程，加快了页面的响应速度，从而使页面响应更加流程
+            worker.DoWork += delegate (object obj, DoWorkEventArgs dw)
             {
-                this.dgv_BookType.AutoGenerateColumns = false;
-                dgv_BookType.DataSource = Response;
-            }
-            else
+                Response = BookManagementBLL.GetBookType(request);
+            };
+            worker.RunWorkerCompleted += delegate (object obj, RunWorkerCompletedEventArgs rwc)
             {
-                dgv_BookType.DataSource = null;
-            }
+                if (Response != null)
+                {
+                    this.dgv_BookType.AutoGenerateColumns = false;
+                    dgv_BookType.DataSource = Response;
+                }
+                else
+                {
+                    dgv_BookType.DataSource = null;
+                }
+            };
+            worker.RunWorkerAsync();
+
+
 
         }
 
