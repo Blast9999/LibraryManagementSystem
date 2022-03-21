@@ -35,7 +35,7 @@ namespace LibraryManagementSystem
 
 
 
-            List<UserLendInfo> Response = null;
+            List<UserLendInfo> Response=null;
             BackgroundWorker worker = new BackgroundWorker();//使用了worker线程，加快了页面的响应速度，从而使页面响应更加流程
             worker.DoWork += delegate (object obj, DoWorkEventArgs dw)
             {
@@ -43,24 +43,24 @@ namespace LibraryManagementSystem
             };
             worker.RunWorkerCompleted += delegate (object obj, RunWorkerCompletedEventArgs rwc)
             {
-                foreach (var item in Response)
-                {
-                    if (Convert.ToDateTime(item.ReturnBookTime) < DateTime.Now)
-                    {
-                        UserLendInfoRequest req = new UserLendInfoRequest()
-                        {
-                            Name = UserName,
-                            ReaderID = UserCode,
-                            Title = item.Title,
-                            BookCode = item.BookCode
-                        };
-                        BookManagementBLL.OverdueAmendment(req);
-                    }
-                }
-
 
                 if (Response != null)
                 {
+                    foreach (var item in Response)
+                    {
+                        if (Convert.ToDateTime(item.ReturnBookTime) < DateTime.Now)
+                        {
+                            UserLendInfoRequest req = new UserLendInfoRequest()
+                            {
+                                Name = UserName,
+                                ReaderID = UserCode,
+                                Title = item.Title,
+                                BookCode = item.BookCode
+                            };
+                            BookManagementBLL.OverdueAmendment(req);
+                        }
+                    }
+
                     this.dgv_BorrowInfo.AutoGenerateColumns = false;
                     dgv_BorrowInfo.DataSource = Response;
                 }

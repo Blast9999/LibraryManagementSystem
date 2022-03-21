@@ -113,8 +113,29 @@ namespace LibraryManagementSystem
                         }
                         else
                         {
-                            MessageBox.Show($"图书:《{ tb_Title.Text}》已被{tb_BookingStudent.Text}预约！");
-                            return;
+                            DateTime t1 = Convert.ToDateTime(DateTimeHelper.TimestampConvertToDateTime(BookLending.BookingEndDate));
+                            ///当前时间
+                            DateTime t2 = Convert.ToDateTime(DateTime.Now.ToString("yyyy-MM-dd 00:00:00"));
+                            if (t1 <= t2)
+                            {
+                                //如果预约者预约时间已逾期，则可以直接借出
+                                DialogResult dialogResult = MessageBox.Show($"当前预约者【{tb_BookingStudent.Text}】预约结束时间为【{t1.ToString()}】预约已逾期，是否继续提交借阅信息？", "提示：",
+                                MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                                //判断用户最终点击那个按钮
+                                if (dialogResult != DialogResult.Yes)
+                                {
+                                    return;
+                                }
+
+                            }
+                            else
+                            {
+                                MessageBox.Show($"图书:《{ tb_Title.Text}》已被{tb_BookingStudent.Text}预约！");
+                                return;
+                            }
+
+
+                            
                         }
                     }
                 }
@@ -168,7 +189,7 @@ namespace LibraryManagementSystem
                 if (t1 <= t2)
                 {
                     //如果预约者预约时间已逾期，则可以直接预约
-                    DialogResult result = MessageBox.Show($"当前预约者【{tb_BookingStudent.Text}】预约结束时间为【{t1.ToString()}】逾期已逾期，是否继续提交预约信息？", "提示：",
+                    DialogResult result = MessageBox.Show($"当前预约者【{tb_BookingStudent.Text}】预约结束时间为【{t1.ToString()}】预约已逾期，是否继续提交预约信息？", "提示：",
                     MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                     //判断用户最终点击那个按钮
                     if (result != DialogResult.Yes)

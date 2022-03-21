@@ -8,3 +8,13 @@ E:\毕业设计模板\LibraryManagementSystem\LibraryManagementSystem\DAL\obj\De
 E:\毕业设计模板\LibraryManagementSystem\LibraryManagementSystem\DAL\obj\Debug\DAL.dll
 E:\毕业设计模板\LibraryManagementSystem\LibraryManagementSystem\DAL\obj\Debug\DAL.pdb
 E:\毕业设计模板\LibraryManagementSystem\LibraryManagementSystem\DAL\bin\Debug\DAL.dll.config
+E:\毕业设计\LibraryManagementSystem\LibraryManagementSystem\DAL\bin\Debug\DAL.dll.config
+E:\毕业设计\LibraryManagementSystem\LibraryManagementSystem\DAL\bin\Debug\DAL.dll
+E:\毕业设计\LibraryManagementSystem\LibraryManagementSystem\DAL\bin\Debug\DAL.pdb
+E:\毕业设计\LibraryManagementSystem\LibraryManagementSystem\DAL\bin\Debug\Model.dll
+E:\毕业设计\LibraryManagementSystem\LibraryManagementSystem\DAL\bin\Debug\Model.pdb
+E:\毕业设计\LibraryManagementSystem\LibraryManagementSystem\DAL\obj\Debug\DAL.csproj.AssemblyReference.cache
+E:\毕业设计\LibraryManagementSystem\LibraryManagementSystem\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
+E:\毕业设计\LibraryManagementSystem\LibraryManagementSystem\DAL\obj\Debug\DAL.csproj.CopyComplete
+E:\毕业设计\LibraryManagementSystem\LibraryManagementSystem\DAL\obj\Debug\DAL.dll
+E:\毕业设计\LibraryManagementSystem\LibraryManagementSystem\DAL\obj\Debug\DAL.pdb

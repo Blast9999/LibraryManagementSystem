@@ -20,15 +20,19 @@ namespace LibraryManagementSystem
         }
         private void BorrowBooks_Load(object sender, EventArgs e)
         {
-            bt_Inquire_Click(null, null);
+            //bt_Inquire_Click(null, null);
             var Response = BookManagementBLL.GetBookType();
-            List<string> TypeName = new List<string>();
-            TypeName.Add("全部");
-            foreach (var item in Response)
+            if (Response != null)
             {
-                TypeName.Add(item.Name);
+                List<string> TypeName = new List<string>();
+                TypeName.Add("全部");
+                foreach (var item in Response)
+                {
+                    TypeName.Add(item.Name);
+                }
+                cb_BookType.DataSource = TypeName;
             }
-            cb_BookType.DataSource = TypeName;
+
             List<string> PageSize = new List<string>();
             PageSize.Add("1");
             PageSize.Add("5");
@@ -55,7 +59,7 @@ namespace LibraryManagementSystem
             BackgroundWorker worker = new BackgroundWorker();//使用了worker线程，加快了页面的响应速度，从而使页面响应更加流程
             worker.DoWork += delegate (object obj, DoWorkEventArgs dw)
             {
-                 Response = BookManagementBLL.GetBooks(bookRequest, out totalPage);
+                Response = BookManagementBLL.GetBooks(bookRequest, out totalPage);
             };
             worker.RunWorkerCompleted += delegate (object obj, RunWorkerCompletedEventArgs rwc)
             {

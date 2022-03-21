@@ -11,3 +11,16 @@ E:\毕业设计模板\LibraryManagementSystem\LibraryManagementSystem\BLL\obj\De
 E:\毕业设计模板\LibraryManagementSystem\LibraryManagementSystem\BLL\obj\Debug\BLL.pdb
 E:\毕业设计模板\LibraryManagementSystem\LibraryManagementSystem\BLL\bin\Debug\BLL.dll.config
 E:\毕业设计模板\LibraryManagementSystem\LibraryManagementSystem\BLL\bin\Debug\DAL.dll.config
+E:\毕业设计\LibraryManagementSystem\LibraryManagementSystem\BLL\bin\Debug\BLL.dll.config
+E:\毕业设计\LibraryManagementSystem\LibraryManagementSystem\BLL\bin\Debug\BLL.dll
+E:\毕业设计\LibraryManagementSystem\LibraryManagementSystem\BLL\bin\Debug\BLL.pdb
+E:\毕业设计\LibraryManagementSystem\LibraryManagementSystem\BLL\bin\Debug\DAL.dll
+E:\毕业设计\LibraryManagementSystem\LibraryManagementSystem\BLL\bin\Debug\Model.dll
+E:\毕业设计\LibraryManagementSystem\LibraryManagementSystem\BLL\bin\Debug\DAL.pdb
+E:\毕业设计\LibraryManagementSystem\LibraryManagementSystem\BLL\bin\Debug\DAL.dll.config
+E:\毕业设计\LibraryManagementSystem\LibraryManagementSystem\BLL\bin\Debug\Model.pdb
+E:\毕业设计\LibraryManagementSystem\LibraryManagementSystem\BLL\obj\Debug\BLL.csproj.AssemblyReference.cache
+E:\毕业设计\LibraryManagementSystem\LibraryManagementSystem\BLL\obj\Debug\BLL.csproj.CoreCompileInputs.cache
+E:\毕业设计\LibraryManagementSystem\LibraryManagementSystem\BLL\obj\Debug\BLL.csproj.CopyComplete
+E:\毕业设计\LibraryManagementSystem\LibraryManagementSystem\BLL\obj\Debug\BLL.dll
+E:\毕业设计\LibraryManagementSystem\LibraryManagementSystem\BLL\obj\Debug\BLL.pdb
