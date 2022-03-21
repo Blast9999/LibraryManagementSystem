@@ -69,7 +69,7 @@ namespace Model
         /// 是否逾期归还（0—否，1—是）
         /// </summary>
         public string IsOverdue { get; set; }
-        public string Overdue { get { return IsOverdue == "0" ? "未逾期归还" : (IsOverdue == "1" ? "已逾期归还" : ""); } }
+        public string Overdue { get { return IsOverdue == "0" ? "否" : (IsOverdue == "1" ? "是" : ""); } }
         /// <summary>
         /// 备注
         /// </summary>

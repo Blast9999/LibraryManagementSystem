@@ -455,6 +455,7 @@ namespace LibraryManagementSystem
             this.Column13.MinimumWidth = 6;
             this.Column13.Name = "Column13";
             this.Column13.ReadOnly = true;
+            this.Column13.Visible = false;
             // 
             // Column9
             // 
@@ -517,6 +518,7 @@ namespace LibraryManagementSystem
         private System.Windows.Forms.ComboBox cb_PageSize;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.DataGridView dgv_Student;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
@@ -530,6 +532,5 @@ namespace LibraryManagementSystem
         private System.Windows.Forms.DataGridViewTextBoxColumn Column13;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
         private System.Windows.Forms.DataGridViewButtonColumn Column10;
-        private System.Windows.Forms.DataGridView dgv_Student;
     }
 }

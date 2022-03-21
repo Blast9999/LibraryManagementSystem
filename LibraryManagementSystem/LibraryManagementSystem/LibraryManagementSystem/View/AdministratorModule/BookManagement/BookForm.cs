@@ -30,15 +30,19 @@ namespace LibraryManagementSystem
         }
         private void BookForm_Load(object sender, EventArgs e)
         {
-            bt_Inquire_Click(null, null);
+            //bt_Inquire_Click(null, null);
             var Response = BookManagementBLL.GetBookType();
-            List<string> TypeName = new List<string>();
-            TypeName.Add("全部");
-            foreach (var item in Response)
+            if (Response != null)
             {
-                TypeName.Add(item.Name);
+                List<string> TypeName = new List<string>();
+                TypeName.Add("全部");
+                foreach (var item in Response)
+                {
+                    TypeName.Add(item.Name);
+                }
+                cb_BookType.DataSource = TypeName;
             }
-            cb_BookType.DataSource = TypeName;
+
             List<string> PageSize = new List<string>();
             PageSize.Add("1");
             PageSize.Add("5");
@@ -80,7 +84,7 @@ namespace LibraryManagementSystem
             worker.DoWork += delegate (object obj, DoWorkEventArgs dw)
             {
                 //Thread.Sleep(5000);//线程暂停5秒
-               Response = BookManagementBLL.GetBooks(bookRequest, out totalPage);
+                Response = BookManagementBLL.GetBooks(bookRequest, out totalPage);
             };
             worker.RunWorkerCompleted += delegate (object obj, RunWorkerCompletedEventArgs rwc)
             {

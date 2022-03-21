@@ -34,7 +34,6 @@ namespace LibraryManagementSystem
             };
 
 
-
             List<UserLendInfo> Response=null;
             BackgroundWorker worker = new BackgroundWorker();//使用了worker线程，加快了页面的响应速度，从而使页面响应更加流程
             worker.DoWork += delegate (object obj, DoWorkEventArgs dw)
