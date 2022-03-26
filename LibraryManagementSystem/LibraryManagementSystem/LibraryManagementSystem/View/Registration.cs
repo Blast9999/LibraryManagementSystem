@@ -10,6 +10,7 @@ using System.Net;
 using System.Net.Mail;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -490,43 +491,44 @@ namespace LibraryManagementSystem
         {
             if (Timing == 60)
             {
-                Random random = new Random();
-                Num = null;
-                for (int i = 0; i <= 5; i++)
-                {
-                    var x = random.Next(1, 10);
-                    Num += x;
-                }
-
                 if (StudentMail)
                 {
-                    bool IsMail = false;
-                    BackgroundWorker worker = new BackgroundWorker();//使用了多线程，加快了页面的响应速度，从而使页面响应更加流程
-                    worker.DoWork += delegate (object obj, DoWorkEventArgs dw)
+                    Random random = new Random();
+                    Num = null;
+                    for (int i = 0; i <= 5; i++)
                     {
-                        //await Task.Run(() =>
-                        //{
-                        string Title = $"您的【YY图书馆】学生注册验证码为{Num}";
-                        string Content = $"您注册验证码为【{Num}】，切勿将验证码泄露与他人，本条验证码有效期限2分钟，关闭程序需重新获取验证码！！";
-                        IsMail = SendEmail(tb_Mail.Text, Title, Content);
-                        //});
+                        var x = random.Next(1, 10);
+                        Num += x;
+                    }
 
-                    };
-                    worker.RunWorkerCompleted += delegate (object obj, RunWorkerCompletedEventArgs rwc)
-                    {
-                       
 
-                        this.timer1.Enabled = true;
-                        //this.timer1.Start();
-                        this.timer2.Enabled = true;
+                    //bool IsMail = false;
+                    //BackgroundWorker worker = new BackgroundWorker();//使用了多线程，加快了页面的响应速度，从而使页面响应更加流程
+                    //worker.DoWork += delegate (object obj, DoWorkEventArgs dw)
+                    //{
+                    //    //await Task.Run(() =>
+                    //    //{
+                    //    string Title = $"您的【YY图书馆】学生注册验证码为{Num}";
+                    //    string Content = $"您注册验证码为【{Num}】，切勿将验证码泄露与他人，本条验证码有效期限2分钟，关闭程序需重新获取验证码！！";
+                    //    IsMail = SendEmail(tb_Mail.Text, Title, Content);
+                    //    //});
 
-                        if (!IsMail)
-                        {
-                            MessageBox.Show("验证码发送失败！请联系管理员查看！");
-                        }
+                    //};
+                    //worker.RunWorkerCompleted += delegate (object obj, RunWorkerCompletedEventArgs rwc)
+                    //{
 
-                    };
-                    worker.RunWorkerAsync();
+
+                    //    this.timer1.Enabled = true;
+                    //    //this.timer1.Start();
+                    //    this.timer2.Enabled = true;
+
+                    //    if (!IsMail)
+                    //    {
+                    //        MessageBox.Show("验证码发送失败！请联系管理员查看！");
+                    //    }
+
+                    //};
+                    //worker.RunWorkerAsync();
 
 
                     //if (IsMail)
@@ -535,6 +537,24 @@ namespace LibraryManagementSystem
                     //    //this.timer1.Start();
                     //    this.timer2.Enabled = true;
                     //}
+
+
+                    Task task = Task.Run(() =>
+                    {
+                        string Title = $"您的【YY图书馆】学生注册验证码为{Num}";
+                        string Content = $"您注册验证码为【{Num}】，切勿将验证码泄露与他人，本条验证码有效期限2分钟，关闭程序需重新获取验证码！！";
+                        //IsMail = SendEmail(tb_Mail.Text, Title, Content);
+                        SendEmail(tb_Mail.Text, Title, Content);
+                    });
+
+                    this.timer1.Enabled = true;
+                    this.timer2.Enabled = true;
+
+                    //if (!IsMail)
+                    //{
+                    //    MessageBox.Show("验证码发送失败！请联系管理员查看！");
+                    //}
+
                 }
                 else
                 {
@@ -549,7 +569,6 @@ namespace LibraryManagementSystem
 
 
         }
-
 
 
         /// <summary>
@@ -600,7 +619,6 @@ namespace LibraryManagementSystem
         /// <returns>返回发送邮箱的结果</returns>
         public static bool SendEmail(string mailTo, string mailSubject, string mailContent)
         {
-
             // 设置发送方的邮件信息,例如使用网易的smtp
             string smtpServer = "smtp.163.com"; //SMTP服务器
             string mailFrom = "yy361641626@163.com"; //登陆用户名
@@ -629,7 +647,13 @@ namespace LibraryManagementSystem
             mailMessage.Priority = MailPriority.Low;//优先级
             try
             {
+                //double qq = 0;
+                //for (double i = 0; i < 10000000000000000000; i++)
+                //{
+                //    qq += i;
+                //}
                 smtpClient.Send(mailMessage); // 发送邮件
+
                 return true;
             }
             catch (SmtpException ex)
